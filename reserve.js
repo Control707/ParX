@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const startingTopPositionFirstRow = 10; // Starting top position for the first row in pixels
     const startingLeftPosition = 121; // Starting left position in pixels
     const startingTopPositionSecondRow = 80; // Starting top position for the second row in pixels
+    const totalSpotsFirstRow = 55; // Total number of spots in the first row
+    const totalSpotsSecondRow = 32 + 16; // Total number of spots in the second row (including the new spot)
 
     // Function to calculate percentage width for each spot
     function calculatePercentageWidth() {
@@ -26,22 +28,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to calculate percentage top position for each spot in the second row
     function calculatePercentageTopSecondRow(index) {
-        return ((startingTopPositionSecondRow / imageHeight) * 100);
+        if (index < 32) {
+            return ((startingTopPositionSecondRow / imageHeight) * 100);
+        } else {
+            const topPosition = startingTopPositionSecondRow; // 200px space
+            return ((topPosition / imageHeight) * 100);
+        }
     }
 
     // Function to calculate percentage left position for each spot
     function calculatePercentageLeft(index) {
-        return (((index % 55) * spotWidth) / imageWidth) * 100 + (startingLeftPosition / imageWidth) * 100;
+        if (index < totalSpotsFirstRow) {
+            return (((index % 55) * spotWidth) / imageWidth) * 100 + (startingLeftPosition / imageWidth) * 100;
+        } else if (index < totalSpotsFirstRow + 32) {
+            return (((index - totalSpotsFirstRow) % 32) * spotWidth) / imageWidth * 100 + (startingLeftPosition / imageWidth) * 100;
+        } else {
+            const newSpotsLeftOffset = 776; // Left offset for new spots after spot 102
+            const leftPositionAfter102 = (((index - totalSpotsFirstRow - 32) % 16) * spotWidth) / imageWidth * 100 + (newSpotsLeftOffset / imageWidth) * 100;
+            return leftPositionAfter102;
+        }
     }
-
 
     // Your other JavaScript code goes here...
 
-
-
     const parkingSpotContainer = document.getElementById('parking-spots');
-    const totalSpotsFirstRow = 55; // Total number of spots in the first row
-    const totalSpotsSecondRow = 32; // Total number of spots in the second row
     const totalSpots = totalSpotsFirstRow + totalSpotsSecondRow;
 
     // Generate both rows of parking spots
@@ -54,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (i < totalSpotsFirstRow) {
             spot.style.top = `${calculatePercentageTopFirstRow(i)}%`;
         } else {
-            spot.style.top = `${calculatePercentageTopSecondRow(i - totalSpotsFirstRow)}%`;
+            spot.style.top = `${calculatePercentageTopSecondRow(i)}%`;
         }
         spot.style.left = `${calculatePercentageLeft(i)}%`;
         parkingSpotContainer.appendChild(spot);
