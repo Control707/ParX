@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <h1>Parking Reservation System</h1>
+    <h2>Shuttle Parking</h2>
     <div class="parking-container">
         <img src="img/shuttel_parking.png" id="parking-image" alt="Satellite Image" height="720" width="1280">
         <div class="parking-spot available" data-spot-id="1"></div>
@@ -18,7 +20,6 @@
         <div id="parking-spots"></div> <!-- This is where we'll dynamically generate the parking spots -->
     </div>
     <!-- Add more parking spot divs for other spots -->
-    </div>
 
     <!-- Modal for displaying error messages -->
     <div id="error-modal" class="modal">
@@ -34,6 +35,9 @@
         <div class="modal-content">
             <span class="close" id="close-reservation-modal">&times;</span>
             <h2>Reserve Parking Spot</h2>
+
+            <p id="spot-id-in-modal"></p> <!-- Display spot ID here -->
+
             <form id="reservation-form">
                 <label for="day">Select Day:</label>
                 <input type="date" id="day" required>
