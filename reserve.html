@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="reserve.js" defer></script>
+</head>
+
+<body>
+    <div class="parking-container">
+        <img src="img/shuttel_parking.png" id="parking-image" alt="Satellite Image" height="720" width="1280">
+        <div class="parking-spot available" data-spot-id="1"></div>
+        <div class="parking-spot reserved" data-spot-id="2"></div>
+        <div class="parking-spot reserved" data-spot-id="3"></div>
+        <div id="parking-spots"></div> <!-- This is where we'll dynamically generate the parking spots -->
+    </div>
+    <!-- Add more parking spot divs for other spots -->
+    </div>
+
+    <!-- Modal for displaying error messages -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-error-modal">&times;</span>
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+
+    <!-- Modal for reservation -->
+    <div id="reservation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-reservation-modal">&times;</span>
+            <h2>Reserve Parking Spot</h2>
+            <form id="reservation-form">
+                <label for="day">Select Day:</label>
+                <input type="date" id="day" required>
+
+                <label for="from">From:</label>
+                <select id="from" required>
+                    <!-- Populate options for hours -->
+                </select>
+
+                <label for="to">To:</label>
+                <select id="to" required>
+                    <!-- Populate options for hours -->
+                </select>
+
+                <p id="cost-display">Estimated Cost: $0</p>
+
+                <button type="submit">Reserve</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
