@@ -73,7 +73,53 @@ document.addEventListener('DOMContentLoaded', function () {
             const spotId = event.target.dataset.spotId;
             openReservationModal(spotId);
         });
+
+
+        //vertical spots
+
+        function generateVerticalSpots() {
+            const verticalSpotWidth = 36; // Width of each vertical spot in pixels
+            const verticalSpotHeight = 17; // Height of each vertical spot in pixels
+            const totalVerticalSpots = 40; // Total number of vertical spots
+            const verticalColumnSpacing = 30; // Spacing between the two vertical columns
+            const verticalStartingTopPosition = 370; // Starting top position for vertical spots
+            const verticalStartingLeftPosition = 702; // Starting left position for vertical spots
+
+            for (let i = 0; i < totalVerticalSpots; i++) {
+                const spot = document.createElement('div');
+                spot.className = 'parking-spot available';
+                spot.setAttribute('data-spot-id', i + totalSpotsFirstRow + totalSpotsSecondRow + 1);
+                spot.style.width = `${(verticalSpotWidth / imageWidth) * 100}%`;
+                spot.style.height = `${(verticalSpotHeight / imageHeight) * 100}%`;
+
+                const columnIndex = Math.floor(i / 20); // Determine the column
+                const rowIndex = i % 20;
+                const leftOffset = columnIndex * (verticalSpotWidth + verticalColumnSpacing);
+                const leftPosition = verticalStartingLeftPosition + leftOffset;
+                const topOffset = rowIndex * verticalSpotHeight;
+                const topPosition = verticalStartingTopPosition + topOffset;
+
+                spot.style.top = `${(topPosition / imageHeight) * 100}%`;
+                spot.style.left = `${(leftPosition / imageWidth) * 100}%`;
+
+                parkingSpotContainer.appendChild(spot);
+
+                spot.addEventListener('click', (event) => {
+                    const spotId = event.target.dataset.spotId;
+                    openReservationModal(spotId);
+                });
+            }
+        }
+
+
+
+        // Generate vertical spots
+        generateVerticalSpots();
+
     }
+
+
+
 
 
     //resreved spots
