@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
     // Constants based on the provided information
@@ -87,7 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             for (let i = 0; i < totalVerticalSpots; i++) {
                 const spot = document.createElement('div');
-                spot.className = 'parking-spot available';
+                spot.className = 'parking-spot reserved';
+                // Generate the reservation time dynamically
+                const reservationTime = new Date(); // Replace with your logic to get the reservation time
+                spot.setAttribute('data-reservation-time', reservationTime.toISOString());
+
+
                 spot.setAttribute('data-spot-id', i + totalSpotsFirstRow + totalSpotsSecondRow + 1);
                 spot.style.width = `${(verticalSpotWidth / imageWidth) * 100}%`;
                 spot.style.height = `${(verticalSpotHeight / imageHeight) * 100}%`;
@@ -224,13 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // Handle form submission
-    // Handle form submission
-
-
-    // Retrieve form data
-
-
 
 
 
@@ -256,3 +255,26 @@ function reserveSpot() {
     window.location.href = paymentUrl;
 }
 
+function updateParkingSpots() {
+    const parkingSpots = document.querySelectorAll('.parking-spot');
+
+    // Get the current time
+    const currentTime = new Date();
+
+    parkingSpots.forEach(parkingSpot => {
+        // Get the reservation time from the data attribute or any other source
+        const reservationTime = new Date(parkingSpot.getAttribute('data-reservation-time'));
+
+        if (currentTime < reservationTime) {
+            // Reservation is still active, mark the spot as reserved
+            parkingSpot.style.backgroundColor = 'red';
+        } else {
+            // Reservation has ended, mark the spot as available
+            parkingSpot.style.backgroundColor = 'green';
+        }
+    });
+}
+updateParkingSpots();
+
+
+// Function to update parking spots based on reservation data

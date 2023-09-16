@@ -1,3 +1,19 @@
+body {
+    margin: 8%;
+    background-color: #7D7C7C;
+    color: #F1EFEF;
+}
+
+.modal {
+    background-color: #7D7C7C;
+    color: #F1EFEF;
+}
+
+.modal-content {
+    background-color: yellow;
+    color: #000;
+}
+
 img {
     max-width: 100%;
     height: auto;
