@@ -1,0 +1,26 @@
+body::before {
+    display: block;
+    content: '';
+    height: 60px;
+}
+
+@media (min-width: 768px) {
+    .news-input {
+        width: 50%;
+    }
+}
+
+.custom-text-format {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.custom-text-format2 {
+    font-size: 21px;
+    line-height: 30px;
+}
+
+#boxInput {
+    width: 300px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+}
