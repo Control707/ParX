@@ -17,9 +17,11 @@ img {
     /* Adjust the height as a percentage */
     border: 1px solid #000;
     transition: background-color 0.3s ease;
-    opacity: 0.7;
+    opacity: 0.5;
     /* Adjust opacity value as needed, 1.0 is fully opaque, 0.0 is fully transparent */
 }
+
+
 
 .available {
     background-color: rgba(0, 255, 0, 0.7);

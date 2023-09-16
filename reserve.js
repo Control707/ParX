@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // ... Existing JavaScript code ...
+    // reservation modal 
 
 
     const reservationModal = document.getElementById('reservation-modal');
@@ -222,17 +222,37 @@ document.addEventListener('DOMContentLoaded', function () {
         costDisplay.textContent = `Estimated Cost: $${cost}`;
     }
 
+
+
     // Handle form submission
-    reservationForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        // Implement redirection to a payment page here
-        alert('Redirecting to the payment page...');
-        reservationModal.style.display = 'none';
-    });
+    // Handle form submission
+
+
+    // Retrieve form data
+
+
 
 
 
     // ... More JavaScript code ...
 });
+function reserveSpot() {
+    const spotId = document.getElementById('spot-id-in-modal').textContent.split(' ')[2];
+    const from = document.getElementById('from').value;
+    const to = document.getElementById('to').value;
+    const date = document.getElementById('day').value;
+    const cost = (parseInt(to.split(':')[0]) - parseInt(from.split(':')[0])) * 10;
 
+    // Handle the reservation logic here
+    console.log('Spot ID:', spotId);
+    console.log('From:', from);
+    console.log('To:', to);
+    console.log('Date:', date);
+    console.log('Cost:', cost);
+
+    // Redirect to the payment page
+    const paymentUrl = `payment.html?spotId=${encodeURIComponent(spotId)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${encodeURIComponent(date)}&cost=${encodeURIComponent(cost)}`;
+    console.log('Payment URL:', paymentUrl);
+    window.location.href = paymentUrl;
+}
 

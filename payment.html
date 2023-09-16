@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+
+<body>
+    <h1>Payment Information</h1>
+    <div>
+        <h2>Reservation Details</h2>
+        <p id="spot-id"></p>
+        <p id="date"></p>
+        <p id="from"></p>
+        <p id="to"></p>
+        <p id="cost"></p>
+
+
+    </div>
+
+
+
+    <!-- Add form fields for payment details (first name, last name, email, phone, credit card, etc.) -->
+    <div>
+        <h2>Parker Information</h2>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" placeholder="First Name"><br>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" placeholder="Last Name"><br>
+
+        <label for="tag">Tag:</label>
+        <input type="text" id="tag" placeholder="Tag"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email"><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" placeholder="Phone"><br>
+    </div>
+
+    <div>
+        <h2>Card Details</h2>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="Card Number"><br>
+
+        <label for="card-name">Name on Card:</label>
+        <input type="text" id="card-name" placeholder="Name on Card"><br>
+
+        <label for="exp">Expiration Date :</label>
+        <input type="text" id="exp" placeholder="MM/YYYY"><br>
+
+        <label for="cvc">CVC:</label>
+        <input type="text" id="cvc" placeholder="CVC"><br>
+
+        <label for="zip-code">Zip Code:</label>
+        <input type="text" id="zip-code" placeholder="Zip Code"><br>
+    </div>
+
+    <button id="pay-button">Pay</button>
+
+
+
+    <script src="payment.js"> </script>
+
+</body>
+
+</html>
